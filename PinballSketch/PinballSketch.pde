@@ -1,4 +1,4 @@
-public int posBat;
+int posBat;
 MoveBall mb;
 
 void setup(){
@@ -14,7 +14,10 @@ void draw(){
   }else{
     background(0, 0, 0);
     fill(255, 255, 255);
-    mb.moveBall();
+    text(mb.posBallY, 50, 50);
+    text(mb.posBallX, 70, 70);
+    text(posBat, 100, 100);
+    mb.moveBall(posBat);
     drawBat();
   }
 }

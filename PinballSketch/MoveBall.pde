@@ -8,8 +8,8 @@ class MoveBall{
 
   PinballSketch ps = new PinballSketch();
 
-  void moveBall(){
-    setMovementBall();
+  void moveBall(int posBat){
+    setMovementBall(posBat);
     if(down==false && left==false){
       moveBallRightUp();
     }else if(down==true && left==false){
@@ -21,11 +21,11 @@ class MoveBall{
     }
   }
 
-  void setMovementBall(){
-    if(posBallY==480 && posBallX>ps.posBat && posBallX<=ps.posBat+40) {
+  void setMovementBall(int posBat){
+    if(posBallY==480 && posBallX>posBat && posBallX<=posBat+40) {
       down=false;
       left=true;
-    }else if(posBallY==480 && posBallX>ps.posBat+40 && posBallX<ps.posBat+80){
+    }else if(posBallY==480 && posBallX>posBat+40 && posBallX<posBat+90){
       down=false;
       left=false;
     }else if(posBallY==0 && posBallX==0){

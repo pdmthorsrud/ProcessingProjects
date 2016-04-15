@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class PinballSketch extends PApplet {
 
-public int posBat;
+int posBat;
 MoveBall mb;
 
 public void setup(){
@@ -30,7 +30,10 @@ public void draw(){
   }else{
     background(0, 0, 0);
     fill(255, 255, 255);
-    mb.moveBall();
+    text(mb.posBallY, 50, 50);
+    text(mb.posBallX, 70, 70);
+    text(posBat, 100, 100);
+    mb.moveBall(posBat);
     drawBat();
   }
 }
@@ -72,12 +75,13 @@ class MoveBall{
   boolean left=false;
   public int posBallX;
   public int posBallY;
-  int ballSpeed = 4;
+  int ballSpeedX = 4;
+  int ballSpeedY = 4;
 
   PinballSketch ps = new PinballSketch();
 
-  public void moveBall(){
-    setMovementBall();
+  public void moveBall(int posBat){
+    setMovementBall(posBat);
     if(down==false && left==false){
       moveBallRightUp();
     }else if(down==true && left==false){
@@ -89,11 +93,11 @@ class MoveBall{
     }
   }
 
-  public void setMovementBall(){
-    if(posBallY==480 && posBallX>ps.posBat && posBallX<=ps.posBat+80) {
+  public void setMovementBall(int posBat){
+    if(posBallY==480 && posBallX>posBat && posBallX<=posBat+40) {
       down=false;
       left=true;
-    }else if(posBallY==480 && posBallX>ps.posBat+40 && posBallX<ps.posBat+80){
+    }else if(posBallY==480 && posBallX>posBat+40 && posBallX<posBat+90){
       down=false;
       left=false;
     }else if(posBallY==0 && posBallX==0){
@@ -112,19 +116,19 @@ class MoveBall{
   }
 
   public void moveBallRightDown(){
-    ellipse(posBallX+=ballSpeed, posBallY+=ballSpeed, 15, 15);
+    ellipse(posBallX += ballSpeedX, posBallY += ballSpeedY, 15, 15);
   }
 
   public void moveBallRightUp(){
-    ellipse(posBallX+=ballSpeed, posBallY-=ballSpeed, 15, 15);
+    ellipse(posBallX += ballSpeedX, posBallY -= ballSpeedY, 15, 15);
   }
 
   public void moveBallLeftDown(){
-    ellipse(posBallX-=ballSpeed, posBallY+=ballSpeed, 15, 15);
+    ellipse(posBallX -= ballSpeedX, posBallY += ballSpeedY, 15, 15);
   }
 
   public void moveBallLeftUp(){
-    ellipse(posBallX-=ballSpeed, posBallY-=ballSpeed, 15, 15);
+    ellipse(posBallX -= ballSpeedX, posBallY -= ballSpeedY, 15, 15);
   }
 }
   public void settings() {  size(1000, 500); }
