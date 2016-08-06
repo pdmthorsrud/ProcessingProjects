@@ -3,10 +3,9 @@ public class SisteArbeider extends Arbeider{
   public SisteArbeider(int id, OrdBuffer ob){
     super(id, ob);
   }
-
+  //gjoer alt d samme som indrearbeider fordi jeg var lat og ikke lagde en skikkelig sistearbeider
   public void finnMinste(){
     String tmp;
-
     if(minsteOrd==null){
       minsteOrd="xyz";
     }
